@@ -1,9 +1,10 @@
 import { useState } from "react";
 import API from "../../services/api";
-
+import { useNavigate } from "react-router-dom";
 function UploadBox() {
   const [image, setImage] = useState(null);
   const [selectedFile, setSelectedFile] = useState(null);
+  const navigate = useNavigate();
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
@@ -26,9 +27,10 @@ function UploadBox() {
     try {
       const response = await API.post("/upload", formData);
 
-      console.log(response.data);
-
-      alert("Image uploaded successfully");
+      navigate("/result", {
+        state: response.data,
+      });
+      alert("Analysis Completed");
     } catch (error) {
       console.error(error);
       alert("Upload failed");
@@ -36,27 +38,70 @@ function UploadBox() {
   };
 
   return (
-    <div className="mt-10">
-      <input
-        type="file"
-        accept="image/*"
-        onChange={handleImageChange}
-      />
+    <div className="max-w-2xl mx-auto">
+
+      <label
+        className="
+          border-2 border-dashed
+          border-green-500
+          rounded-xl
+          p-10
+          flex
+          flex-col
+          items-center
+          justify-center
+          cursor-pointer
+          hover:bg-green-50
+          transition
+        "
+      >
+        <input
+          type="file"
+          accept="image/*"
+          onChange={handleImageChange}
+          className="hidden"
+        />
+
+        <h2 className="text-xl font-semibold">
+          Upload Ingredient Label
+        </h2>
+
+        <p className="text-gray-500 mt-2">
+          JPG, JPEG, PNG Supported
+        </p>
+      </label>
 
       {image && (
-        <div className="mt-5">
+        <div className="mt-8 text-center">
+
           <img
             src={image}
             alt="Preview"
-            className="w-80 rounded-lg shadow"
+            className="
+              mx-auto
+              w-80
+              rounded-xl
+              shadow-lg
+              border
+            "
           />
 
           <button
             onClick={handleUpload}
-            className="mt-4 bg-green-600 text-white px-4 py-2 rounded"
+            className="
+              mt-6
+              bg-green-600
+              hover:bg-green-700
+              text-white
+              px-6
+              py-3
+              rounded-lg
+              font-medium
+            "
           >
-            Upload
+            Analyze Ingredients
           </button>
+
         </div>
       )}
     </div>
