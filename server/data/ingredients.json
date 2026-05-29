@@ -1,0 +1,46 @@
+{
+  "Sugar": {
+    "category": "Sweetener",
+    "risk": "Moderate",
+    "riskScore": -5,
+    "description": "Excess consumption may increase risk of obesity and diabetes.",
+    "diabeticFriendly": false,
+    "heartFriendly": false
+  },
+
+  "Water": {
+    "category": "Healthy Ingredient",
+    "risk": "Low",
+    "riskScore": 10,
+    "description": "Essential for hydration.",
+    "diabeticFriendly": true,
+    "heartFriendly": true
+  },
+
+  "Citric Acid": {
+    "category": "Acidity Regulator",
+    "risk": "Low",
+    "riskScore": 5,
+    "description": "Common food acidifier.",
+    "diabeticFriendly": true,
+    "heartFriendly": true
+  },
+
+  "INS211": {
+    "category": "Preservative",
+    "risk": "High",
+    "riskScore": -10,
+    "description": "Sodium Benzoate preservative.",
+    "diabeticFriendly": true,
+    "heartFriendly": false
+  },
+
+  "Artificial Flavour": {
+    "category": "Artificial Flavor",
+    "risk": "Moderate",
+    "riskScore": -5,
+    "description": "Artificial flavoring agent.",
+    "diabeticFriendly": true,
+    "heartFriendly": false
+  }
+}
