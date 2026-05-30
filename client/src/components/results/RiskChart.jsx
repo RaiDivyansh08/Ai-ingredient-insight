@@ -58,8 +58,13 @@ function RiskChart({ analysis }) {
         Risk Distribution
       </h2>
 
-      <div className="max-w-sm mx-auto">
-        <Pie data={data} />
+      <div className="w-64 h-64 mx-auto">
+        <Pie
+          data={data}
+          options={{
+            maintainAspectRatio: false,
+          }}
+        />
       </div>
 
     </div>

@@ -27,6 +27,20 @@ function UploadBox() {
     try {
       const response = await API.post("/upload", formData);
 
+      // Save Scan History
+      const history =
+        JSON.parse(localStorage.getItem("scanHistory")) || [];
+
+      history.unshift({
+        ...response.data,
+        date: new Date().toLocaleString(),
+      });
+
+      localStorage.setItem(
+        "scanHistory",
+        JSON.stringify(history)
+      );
+
       navigate("/result", {
         state: response.data,
       });
