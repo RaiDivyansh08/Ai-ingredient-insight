@@ -40,7 +40,7 @@ function UploadBox() {
         "scanHistory",
         JSON.stringify(history)
       );
-
+      console.log(response.data);
       navigate("/result", {
         state: response.data,
       });
