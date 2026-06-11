@@ -7,7 +7,6 @@
     "diabeticFriendly": false,
     "heartFriendly": false
   },
-
   "Water": {
     "category": "Healthy Ingredient",
     "risk": "Low",
@@ -16,7 +15,6 @@
     "diabeticFriendly": true,
     "heartFriendly": true
   },
-
   "Citric Acid": {
     "category": "Acidity Regulator",
     "risk": "Low",
@@ -25,7 +23,6 @@
     "diabeticFriendly": true,
     "heartFriendly": true
   },
-
   "INS211": {
     "category": "Preservative",
     "risk": "High",
@@ -34,7 +31,6 @@
     "diabeticFriendly": true,
     "heartFriendly": false
   },
-
   "Artificial Flavour": {
     "category": "Artificial Flavor",
     "risk": "Moderate",
@@ -42,5 +38,13 @@
     "description": "Artificial flavoring agent.",
     "diabeticFriendly": true,
     "heartFriendly": false
+  },
+  "Maltodextrin": {
+    "category": "Food Additive",
+    "risk": "Low",
+    "riskScore": 2,
+    "description": "Maltodextrin is a common food additive derived from starch, used as a thickener, filler, or preservative. It is easily digestible and has a high glycemic index, causing a rapid increase in blood sugar.",
+    "diabeticFriendly": false,
+    "heartFriendly": true
   }
 }

@@ -10,24 +10,37 @@ const uploadImage = async (req, res) => {
 
     const ingredients = parseIngredients(text);
 
-    const analysis = analyzeIngredients(ingredients);
-
+    const analysis = await analyzeIngredients(ingredients);
     const scoreData = calculateScore(analysis);
 
-  const aiSummary = await generateSummary(
-  analysis,
-  scoreData.score
-);
-
-let parsedSummary;
+ let parsedSummary;
 
 try {
-  parsedSummary = JSON.parse(aiSummary);
+
+  const aiSummary =
+    await generateSummary(
+      analysis,
+      scoreData.score
+    );
+
+  parsedSummary = JSON.parse(
+    aiSummary
+      .replace(/```json/g, "")
+      .replace(/```/g, "")
+      .trim()
+  );
+
 } catch (error) {
+
+  console.log(
+    "Summary unavailable, using fallback"
+  );
+
   parsedSummary = {
     positives: [],
     negatives: [],
-    recommendation: aiSummary,
+    recommendation:
+      "AI summary temporarily unavailable.",
   };
 }
 
@@ -40,11 +53,17 @@ res.json({
 });
 
   } catch (error) {
-    res.status(500).json({
-      success: false,
-      message: error.message,
-    });
-  }
+
+  console.error(
+    "UPLOAD ERROR =>",
+    error
+  );
+
+  res.status(500).json({
+    success: false,
+    message: error.message,
+  });
+}
 };
 
 module.exports = {
